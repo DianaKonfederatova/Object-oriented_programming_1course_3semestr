@@ -11,12 +11,22 @@ int* genRandArray(int n, int max){
         massive[i] = randnumbers;
     }
 
+    return massive;
+
 };
 
 void print(int* arr){
+    int size = arr[0];
+
+    std::cout << size << ": ";
+
+    for (int i = 0; i < size; i++){
+        std::cout << arr[i] << " ";
+    }
+
+    std::cout << "\n";
 
 };
-
 
 int main(){
     srand(time(NULL));
