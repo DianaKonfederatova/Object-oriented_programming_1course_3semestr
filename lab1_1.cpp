@@ -34,4 +34,6 @@ int main(){
     int maxValue = 100;
     int *arr = genRandArray(size, maxValue);
     print(arr);
+    
+    delete[] arr;
 }
