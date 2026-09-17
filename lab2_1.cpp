@@ -32,12 +32,27 @@ void print_matrix1(int** array, int rows, int cols){
 
 }
 
+void right_diagonal(int* D, int** matrix, int rows, int cols, int& index){
+    int count_el = cols;
+
+    for(int i = 0; i < rows; i++){
+            D[index] = matrix[i][cols - 1 - i];
+            index++;
+    }
+  
+}
+
+
+
 int main(){
     srand(time(NULL));
     int N = 5;
     int** matrix = nullptr;
-    int* D = new int;
+    int size_D = N * N;
+    int* D = new int[size_D];
+    int cur_index = 0;
     gener_matrix1(matrix, N, N);
+    std::cout << "Матрица:\n";
     print_matrix1(matrix, N, N);
 
     for(int i = 0; i < N; i++){
@@ -45,6 +60,7 @@ int main(){
     }
 
     delete[] matrix;
+    delete[] D;
 
     return 0;
 
