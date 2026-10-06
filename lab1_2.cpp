@@ -37,6 +37,7 @@ void printMatrix(int** arr){
     }
 
     int rows = arr[0][0];
+    std::cout << rows << "\n";
 
     for (int i = 1; i <= rows; i++){
         int number_elements = arr[i][0];
@@ -56,13 +57,14 @@ void printMatrix(int** arr){
 int main(){
     srand(time(NULL));
     int size = rand() % 10;
+    if (size == 0) {
+        size = 1;
+    }
     int maxValue = 100;
     int** matrix = genRandMatrix(size, maxValue);
     printMatrix(matrix);
 
-    int rows = matrix[0][0];
-
-    for(int i = 0; i <= rows; i++){
+    for(int i = 0; i <= size; i++){
         delete[] matrix[i];
     }
 
