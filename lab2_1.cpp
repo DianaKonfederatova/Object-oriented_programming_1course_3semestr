@@ -1,67 +1,61 @@
 #include <iostream>
-#include <cstdlib>
 #include <ctime>
 
+int** genRandMassive(int n){
+    int rows = n;
+    int cols = n;
 
-int** gener_matrix1(int**& array, int rows, int cols){
-    array = new int*[rows];
+    if (n == 0){
+        std::cout << "Размер массива должен быть больше 0";
+        return nullptr;
+    }
+
+    int** arr = new int*[rows];
 
     for (int i = 0; i < rows; i++){
-        array[i] = new int[cols];
-
-        for(int j = 0; j < cols; j++){
-            int random = rand() % 10 + 1;
-            array[i][j] = random;
+        arr[i] = new int[cols];
+        for(int j = 0; j <= cols; j++){
+            arr[i][j] = rand() % 25 + 1;
         }
     }
 
-    return array;
+    return arr;
 
 }
 
-void print_matrix1(int** array, int rows, int cols){
-    for(int i = 0; i < rows; i++){
+void print(int** arr, int n){
+    if(arr == nullptr){
+        return;
+    }
 
-        for(int j = 0; j < cols; j++){
-            std::cout << array[i][j] << "\t";
+    int rows = n;
+    int cols = n;
+
+    std::cout << "Исходный двумерный массив:\n";
+    for (int i = 0; i < rows; i++){
+
+        for(int j = 1; j<cols; j++){
+            std::cout << arr[i][j] << "\t";
         }
 
         std::cout << "\n";
-
     }
+    
+    std::cout << "\n";
 
-}
-
-void right_diagonal(int* D, int** matrix, int rows, int cols, int& index){
-    int count_el = cols;
-
-    for(int i = 0; i < rows; i++){
-            D[index] = matrix[i][cols - 1 - i];
-            index++;
-    }
-  
-}
-
-
+};
 
 int main(){
     srand(time(NULL));
     int N = 5;
-    int** matrix = nullptr;
-    int size_D = N * N;
-    int* D = new int[size_D];
-    int cur_index = 0;
-    gener_matrix1(matrix, N, N);
-    std::cout << "Матрица:\n";
-    print_matrix1(matrix, N, N);
+    int** arr = genRandMassive(N);
+    print(arr, N);
 
     for(int i = 0; i < N; i++){
-        delete[] matrix[i];
+        delete[] arr[i];
     }
 
-    delete[] matrix;
-    delete[] D;
+    delete[] arr;
 
     return 0;
-
 }
