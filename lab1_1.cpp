@@ -3,6 +3,12 @@
 #include <ctime>
 
 int* genRandArray(int n, int max){
+
+    if(n==0){
+        std::cout << "В массиве нет элементов\n";
+        return nullptr;
+    }
+
     int *massive = new int[n];
     massive[0] = n;
 
@@ -33,7 +39,11 @@ int main(){
     int size = rand()%10;
     int maxValue = 100;
     int *arr = genRandArray(size, maxValue);
-    print(arr);
+
+    if(arr!=nullptr){
+        print(arr);
+    }
+    
     
     delete[] arr;
 }
