@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 #include "Matrix.h"
 
 Matrix::Matrix() : data_(nullptr), rows_(0), cols_(0){
@@ -75,6 +76,19 @@ void Matrix::inputFromKeyboard(){
     for (int i = 0; i < rows_; ++i){
         for (int j = 0; j < cols_; ++j){
             std::cin >> data_[i][j];
+        }
+    }
+}
+
+void Matrix::fillRandom(){
+    if(rows_ == 0 || cols_ == 0){
+        std::cout << "Размер матрицы должен быть больше 0\n";
+        return;
+    }
+
+    for(int i = 0; i < rows_; i++){
+        for(int j = 0; j < cols_; j++){
+            data_[i][j] = rand() % 100;
         }
     }
 }
