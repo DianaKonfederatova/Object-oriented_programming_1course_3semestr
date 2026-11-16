@@ -12,7 +12,7 @@ Matrix::Matrix(int size) : data_(nullptr), rows_(size), cols_(size){
     }else{
         data_ = new int*[rows_];
         for (int i = 0; i<rows_; i++){
-            data_[i] = new int[cols_]{};
+            data_[i] = new int[cols_];
             for (int j = 0; j < cols_; j++){
                 if(i == j){
                     data_[i][j] = 1;
