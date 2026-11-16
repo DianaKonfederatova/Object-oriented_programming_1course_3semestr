@@ -106,3 +106,15 @@ void Matrix::print() const{
         std::cout << "\n";
     }
 }
+
+int Matrix::sum() const{
+    int sum = 0;
+
+    for(int i = 0; i < rows_; i++){
+        for(int j = 0; j < cols_; j++){
+            sum+=data_[i][j];
+        }
+    }
+
+    return sum;
+}
