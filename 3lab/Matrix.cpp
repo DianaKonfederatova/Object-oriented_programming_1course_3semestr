@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Matrix.h"
 
 Matrix::Matrix() : data_(nullptr), rows_(0), cols_(0){
@@ -6,7 +7,7 @@ Matrix::Matrix() : data_(nullptr), rows_(0), cols_(0){
 
 Matrix::Matrix(int size) : data_(nullptr), rows_(size), cols_(size){
     if(size < 0){
-        throw std::invalid_argument("Размерность матрицы не может быть отрицательной");
+        throw std::invalid_argument("Размерность матрицы не может быть отрицательной\n");
     }else if(size == 0){
         return;
     }else{
@@ -26,7 +27,7 @@ Matrix::Matrix(int size) : data_(nullptr), rows_(size), cols_(size){
 
 Matrix::Matrix(int rows, int cols) : data_(nullptr), rows_(rows), cols_(cols){
     if(rows_ < 0 || cols_ < 0){
-        throw std::invalid_argument("Размерность матрицы не может быть отрицательной");
+        throw std::invalid_argument("Размерность матрицы не может быть отрицательной\n");
     }else if(rows_ == 0 || cols_ == 0){
         return;
     }else{
@@ -49,7 +50,7 @@ Matrix::~Matrix(){
 
 int Matrix::get(int i, int j) const{
     if(i < 0 || j < 0 || i >=rows_ || j >= cols_){
-        throw std::out_of_range("Выход индекса за границы матрицы");
+        throw std::out_of_range("Выход индекса за границы матрицы\n");
     }
 
     return data_[i][j];
@@ -57,8 +58,23 @@ int Matrix::get(int i, int j) const{
 
 void Matrix::set(int i, int j, int value){
     if(i < 0 || j < 0 || i >=rows_ || j >= cols_){
-        throw std::out_of_range("Выход индекса за границы матрицы");
+        throw std::out_of_range("Выход индекса за границы матрицы\n");
     }
 
     data_[i][j] = value;
+}
+
+void Matrix::inputFromKeyboard(){
+    if(rows_ == 0 || cols_ == 0){
+        std::cout << "Матрица пустая\n";
+        return;
+    }
+
+    std::cout << "Введите " << rows_ * cols_ << " элементов матрицы: \n";
+
+    for (int i = 0; i < rows_; ++i){
+        for (int j = 0; j < cols_; ++j){
+            std::cin >> data_[i][j];
+        }
+    }
 }
