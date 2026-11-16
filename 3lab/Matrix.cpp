@@ -37,3 +37,13 @@ Matrix::Matrix(int rows, int cols) : data_(nullptr), rows_(rows), cols_(cols){
     }
 }
 
+Matrix::~Matrix(){
+    if (data_ == nullptr) return;
+    
+    for (int i = 0; i < rows_; ++i) {
+        delete[] data_[i];
+    }
+
+    delete[] data_;
+}
+
