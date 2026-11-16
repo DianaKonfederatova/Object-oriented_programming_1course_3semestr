@@ -82,7 +82,7 @@ void Matrix::inputFromKeyboard(){
 
 void Matrix::fillRandom(){
     if(rows_ == 0 || cols_ == 0){
-        std::cout << "Размер матрицы должен быть больше 0\n";
+        std::cout << "Матрица пустая\n\n";
         return;
     }
 
@@ -90,5 +90,19 @@ void Matrix::fillRandom(){
         for(int j = 0; j < cols_; j++){
             data_[i][j] = rand() % 100;
         }
+    }
+}
+
+void Matrix::print() const{
+    if(rows_ == 0 || cols_ == 0){
+        std::cout << "Матрица пустая\n\n";
+        return;
+    }
+
+    for(int i = 0; i < rows_; i++){
+        for(int j = 0; j < cols_; j++){
+            std::cout << data_[i][j] << " ";
+        }
+        std::cout << "\n";
     }
 }
