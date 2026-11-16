@@ -54,3 +54,11 @@ int Matrix::get(int i, int j) const{
 
     return data_[i][j];
 }
+
+void Matrix::set(int i, int j, int value){
+    if(i < 0 || j < 0 || i >=rows_ || j >= cols_){
+        throw std::out_of_range("Выход индекса за границы матрицы");
+    }
+
+    data_[i][j] = value;
+}
