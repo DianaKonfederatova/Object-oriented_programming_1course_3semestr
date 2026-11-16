@@ -39,7 +39,7 @@ Matrix::Matrix(int rows, int cols) : data_(nullptr), rows_(rows), cols_(cols){
 
 Matrix::~Matrix(){
     if (data_ == nullptr) return;
-    
+
     for (int i = 0; i < rows_; ++i) {
         delete[] data_[i];
     }
@@ -47,3 +47,10 @@ Matrix::~Matrix(){
     delete[] data_;
 }
 
+int Matrix::get(int i, int j) const{
+    if(i < 0 || j < 0 || i >=rows_ || j >= cols_){
+        throw std::out_of_range("Выход индекса за границы матрицы");
+    }
+
+    return data_[i][j];
+}
