@@ -118,3 +118,11 @@ int Matrix::sum() const{
 
     return sum;
 }
+
+int Matrix::getRows() const{
+    return rows_;
+}
+
+int Matrix::getCols() const{
+    return cols_;
+}
